@@ -66,10 +66,10 @@ class RoomImages(models.Model):
 
 
 class Reservation(models.Model):
-    room = models.ForeignKey(Room, on_delete=models.CASCADE)  # Each reservation is linked to a room
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)  # Make user nullable
-    customer_name = models.CharField(max_length=100, null=True, )  # Provide a default value if needed
-    customer_email = models.CharField(max_length=50, null=True, )  # Provide a default value if needed
+    room = models.ForeignKey(Room, on_delete=models.CASCADE) 
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True) 
+    customer_name = models.CharField(max_length=100, null=True, )  
+    customer_email = models.CharField(max_length=50, null=True, ) 
     customer_phone = models.CharField(max_length=50, null=True, )
     start_date = models.DateField()
     end_date = models.DateField()
