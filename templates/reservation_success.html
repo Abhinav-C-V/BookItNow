@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block start %}
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url({% static 'images/banner-2.jpg' %});" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+        <div class="col-md-9 ftco-animate pb-5">
+            <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Reservation success <i class="ion-ios-arrow-forward"></i></span></p>
+          <h1 class="mb-3 bread">Reservation success</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ftco-section contact-section">
+    <div class="container">
+      <div class="row d-flex mb-5 contact-info">
+          <div class="col-md-4">
+            <h3>Contact Information:</h3>
+              <div class="row mb-5">
+                <div class="col-md-12">
+                    <div class="border w-100 p-4 rounded mb-2 d-flex">
+                        <div class="icon mr-3">
+                            <span class="icon-map-o"></span>
+                        </div>
+                      <p><span>Name:</span>{{ reservation.customer_name }} </p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="border w-100 p-4 rounded mb-2 d-flex">
+                        <div class="icon mr-3">
+                            <span class="icon-mobile-phone"></span>
+                        </div>
+                      <p><span>Phone:</span> <a href="tel://{{ reservation.customer_phone }}">{{ reservation.customer_phone }}</a></p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="border w-100 p-4 rounded mb-2 d-flex">
+                        <div class="icon mr-3">
+                            <span class="icon-envelope-o"></span>
+                        </div>
+                      <p><span>Email:</span> <a href="mailto:{{ reservation.customer_email }}">{{ reservation.customer_email }}</a></p>
+                    </div>
+                </div>
+              </div>
+              
+        </div>
+        
+        <div class="col-md-8 block-9 mb-md-5">
+            <div class="container">
+                <h1>Reservation Confirmed!</h1>
+                <p>Thank you, {{ reservation.customer_name }}! Your reservation has been successfully created.</p>
+        
+                <h2>Reservation Details:</h2>
+                <ul>
+                    <li><strong>Hotel:</strong> {{ reservation.room.hotel.hotel_name }}</li>
+                    <li><strong>Address:</strong> {{ reservation.room.hotel.address }}</li>
+                    <li><strong>Room Category:</strong> {{ reservation.room.category }}</li>
+                    <li><strong>AC Type:</strong> {{ reservation.room.ac_type }}</li>
+                    <li><strong>Check-in Date:</strong> {{ reservation.start_date }}</li>
+                    <li><strong>Check-out Date:</strong> {{ reservation.end_date }}</li>
+                    <li><strong>Total Price:</strong> ₹{{ reservation.total_price }}</li>
+                </ul>
+        
+                {% comment %} <h3>Contact Information:</h3>
+                <ul>
+                    <li><strong>Email:</strong> {{ reservation.customer_email }}</li>
+                    <li><strong>Phone:</strong> {{ reservation.customer_phone }}</li>
+                </ul> {% endcomment %}
+        
+                <a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
